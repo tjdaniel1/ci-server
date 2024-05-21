@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -22,6 +23,13 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
+    public void deleteById(Long id) {
+        Optional<Board> byId = boardRepository.findById(id);
+        byId.orElseThrow(IllegalArgumentException::new);
+        boardRepository.deleteById(id);
+    }
+
+    @Override
     public List<BoardResponse> getAll() {
         return boardRepository.findAll()
                 .stream()
@@ -32,9 +40,5 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public void saveBoard(BoardRequest request) {
         boardRepository.save(request.toEntity());
-    }
-    public String test(int i){
-        if(i%2==0)return "짝";
-        return "홀";
     }
 }

@@ -73,9 +73,7 @@ class BoardServiceImplTest {
 
         Mockito.verify(boardRepository, Mockito.times(1)).save(entity);
     }
-    @Test
-    void test(){
-        String test = boardService.test(1);
-        assertEquals("홀", test);
-    }
+
+
+
 }
