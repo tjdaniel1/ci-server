@@ -31,7 +31,7 @@ class BoardServiceImplTest {
 
         BoardResponse byId = boardService.getById(1l);
 
-//        행위 검증
+//        행위 검증 adfasdf
         Mockito.verify(boardRepository, Mockito.times(1)).findById(1l);
 //        상태 검증
         assertEquals("test", byId.name());
