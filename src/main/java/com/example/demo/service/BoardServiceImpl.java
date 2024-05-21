@@ -33,4 +33,8 @@ public class BoardServiceImpl implements BoardService {
     public void saveBoard(BoardRequest request) {
         boardRepository.save(request.toEntity());
     }
+    public String test(int i){
+        if(i%2==0)return "짝";
+        return "홀";
+    }
 }
